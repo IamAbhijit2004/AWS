@@ -1,0 +1,88 @@
+//Hosting a website on EC2
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install nginx
+
+cd..
+cd var
+cd www
+sudo chmod 777 html
+
+//git owner intialization
+git config --global user.name"Ankandas2004"
+git config --global user.email"ankandasa10@gmail.com"
+
+//Local file to Github Repo
+
+git init
+git add .
+git commit -m "first"
+git remote add origin "https://github.com/Ankandas2004/aws-asg8.git"
+git push -u origin master
+
+//Github Repo to Local File
+
+git init
+git add .
+git clone "https://github.com/Ankandas2004/aws-asg8.git"
+
+
+//Deploy a project from github to EC2
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install nginx
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash 
+apt-get install nodejs
+git clone "https://github.com/Ankandas2004/aws-asg8.git"
+cd aws-asg8
+npm install
+node index.js
+
+//Deploy a project from github to EC2 by creating new security group
+
+#!/bin/bash
+apt-get update
+apt-get upgrade
+apt-get install -y nginx
+systemctl start nginx
+systemctl enable nginx
+apt-get install -y git
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+apt-get install nodejs
+git clone "https://github.com/Ankandas2004/aws-asg8.git"
+cd aws-asg8
+npm install
+node index.js
+
+//Deploy and run the project in AWS without using the port
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install nginx
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash 
+apt-get install nodejs
+git clone "https://github.com/Ankandas2004/aws-asg8.git"
+npm install
+
+cd /
+cd etc
+cd nginx
+cd sites-available
+ls
+sudo chmod 777 default
+sudo nano default
+
+proxy_pass https://localhost:4000;
+proxy_https_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection 'Upgrade';
+proxy_set_header Host $host;
+proxy_cache_bypass $http_upgrade;
+
+cd home
+cd ubuntu
+cd aws-asg8
+ls
+node index.js
